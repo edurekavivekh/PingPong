@@ -10,11 +10,19 @@ class Ball(Turtle):
         self.color("White")
         self.speed("fastest")
         self.goto(0, 0)
+        self.x_move = 2
+        self.y_move = 4
 
-    def move_left(self):
-        self.setheading(180)
-        self.forward(5)
+    def move(self):
+        x_cur = self.xcor() + self.x_move
+        y_cor = self.ycor() + self.y_move
+        if self.xcor() > 290 or self.xcor() < -290:
+            self.goto(0, 0)
+        else:
+            self.goto(x_cur, y_cor)
 
-    def move_right(self):
-        self.setheading(0)
-        self.forward(5)
+    def bounce_y(self):
+        self.y_move *= -1
+
+    def bounce_x(self):
+        self.x_move *= -1
